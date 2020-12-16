@@ -1,0 +1,40 @@
+@import "mixin";
+
+* {
+  max-width: 100%;
+}
+body {
+  background: #161616;
+  color: #FFF;
+  font-size: 14px;
+  margin:0;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.audio-player {
+  position: fixed;
+  bottom: 0;
+}
+
+main {
+  margin:0 16px;
+  @include mq(sm){
+    margin: 0 12px;
+  }
+  p{
+      line-height: 1.6;
+  }
+}
+
+#copyright {
+  margin-bottom: 100px;
+  span {
+      font-size: 14px;
+      color: #544;
+  }
+}
+
+// audio player
+.rhap_header {
+  color: #000;
+}

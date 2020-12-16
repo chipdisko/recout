@@ -1,0 +1,87 @@
+@import "../styles/mixin";
+
+.information{}
+
+.archives {
+    display: flex;
+    flex-wrap: wrap;
+}
+.archive {
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  width: 20%;
+
+  @include mq(xxl) {
+    width: 25%;
+  }
+
+  @include mq(xl) {
+    width: 33.33333%;
+  }
+
+  @include mq(lg) {
+  }
+
+  @include mq(md) {
+    width: 50%;
+    padding: 0 10px;
+  }
+
+  @include mq(sm){
+    width: 100%;
+    padding: 0;
+  }
+
+
+  figure {
+    margin: 0;
+    margin-left: -12px;
+    margin-right: -12px;
+    width: calc(100% + 24px);
+    max-width: none;
+    @include mq(md) {
+      height: 100px;
+      overflow: hidden;
+    }
+    img {
+
+    }
+  }
+  a {
+    display: block;
+    color: #FFFCFC;
+    text-decoration: none;
+    border: 1px solid #FFFCFC;
+    padding: 0 12px 10px;
+    transition: all .5s;
+    &:hover {
+      border-color: $red;
+      color : $red;
+    }
+  }
+  h3 {
+    font-size: 30px;
+  }
+  span {
+    display: block;
+    font-size: 60%;
+  }
+  p {
+
+  }
+  @include mq(md){
+    h3 {
+      font-size: 24px;
+      span {
+        font-size: 80%;
+      }
+    }
+  }
+  @include mq(sm){
+    h3 {
+      font-size: 20px;
+    }
+  }
+
+}
