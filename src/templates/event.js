@@ -31,6 +31,7 @@ export default function Events({data, pageContext}) {
   return (<Layout>
     <Head title={post.frontmatter.title+"@"+post.frontmatter.venue+"@"+post.frontmatter.date}
     />
+    {console.log(data)}
     <article>
       <h1>{post.frontmatter.title} <span>@{post.frontmatter.venue}@{post.frontmatter.date}</span></h1>
       <div className={styles.event}>
@@ -84,7 +85,7 @@ export default function Events({data, pageContext}) {
       <figure className={styles.gallery}>
         {data.images.nodes.map((node) => (
           // <Link key={node.id} to={dataRoot+node.relativePath}><img src={dataRoot+node.relativePath} alt={node.name} /></Link>
-          <img src={dataRoot+node.relativePath} alt={node.name} />
+          <img key={node.id} src={dataRoot+node.relativePath} alt={node.name} />
         ))}
       </figure>
     </article>
