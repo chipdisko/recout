@@ -1,8 +1,9 @@
 import React , {useContext} from "react"
+import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import Head from '../components/head'
 import styles from "./event.module.scss"
-import { Link, graphql } from "gatsby"
+import {trackCustomEvent} from 'gatsby-plugin-google-analytics'
 
 import {
   GlobalDispatchContext,
@@ -47,7 +48,18 @@ export default function Events({data, pageContext}) {
               return <li key={node.id}>
                 <button 
                   className={"audio-play "+(state.musicTitle === node.name? styles.playing: "" )} 
-                  onClick={ ()=> {
+                  onClick={ (e)=> {
+                    // Lets track that custom click 
+                    trackCustomEvent({
+                      // string - required - The object that was interacted with (e.g.video) 
+                      category: "Music Button",
+                      // string - required - Type of interaction (e.g. 'play')
+                      action: "Play Music",
+                      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
+                      label: "played music",
+                      // number - optional - Numeric value associated with the event. (e.g. A product ID)
+                      value: node.name
+                    })
                     dispatch(changeMusic(node.relativePath, node.name))
                   }
                 }>
