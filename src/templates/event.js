@@ -3,7 +3,6 @@ import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import Head from '../components/head'
 import styles from "./event.module.scss"
-import {trackCustomEvent} from 'gatsby-plugin-google-analytics'
 
 import {
   GlobalDispatchContext,
@@ -37,7 +36,7 @@ export default function Events({data, pageContext}) {
       <div className={styles.event}>
         <div className={styles.sounds}>
           <figure>
-            <img src={dataRoot+post.frontmatter.dataDirectry+"/1.jpg"} alt={post.frontmatter.title} />
+            <img src={dataRoot+data.images.nodes[0].relativePath} alt={post.frontmatter.title} />
           </figure>
           <p>▽ CLICK <FontAwesomeIcon icon={faPlay} /> to play, <FontAwesomeIcon icon={faFileDownload} /> to DOWNLOAD.</p>
           <ol>
@@ -50,17 +49,6 @@ export default function Events({data, pageContext}) {
                 <button 
                   className={"audio-play "+(state.musicTitle === node.name? styles.playing: "" )} 
                   onClick={ (e)=> {
-                    // Lets track that custom click 
-                    trackCustomEvent({
-                      // string - required - The object that was interacted with (e.g.video) 
-                      category: "Music Button",
-                      // string - required - Type of interaction (e.g. 'play')
-                      action: "Play Music",
-                      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
-                      label: "played music",
-                      // number - optional - Numeric value associated with the event. (e.g. A product ID)
-                      value: node.name
-                    })
                     dispatch(changeMusic(node.relativePath, node.name))
                   }
                 }>
@@ -104,7 +92,7 @@ export const query = graphql`
       }
     }
     images: allFile(
-      filter: {sourceInstanceName: {eq: "data"}, relativeDirectory: {in: $dataDirectry}, extension: {eq: "jpg"}},
+      filter: {sourceInstanceName: {eq: "data"}, relativeDirectory: {in: $dataDirectry}, extension: {in: ["jpg","png"]}},
       sort: {fields: name, order: ASC}
     ){
       nodes {
