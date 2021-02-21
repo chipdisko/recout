@@ -4,16 +4,19 @@
   max-width: 100%;
 }
 body {
-  background: #161616;
-  color: #FFF;
+  background: #1e1e1e;
+  color: #d5d5d5;
   font-size: 14px;
+  letter-spacing: .02em;
   margin:0;
-  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "Didact Gothic", "Questrial","Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 
 .audio-player {
   position: fixed;
   bottom: 0;
+  z-index: 999;
+  box-shadow: 0 -32px 128px rgba(#000, .6);
 }
 
 main {
@@ -35,6 +38,19 @@ main {
 }
 
 // audio player
-.rhap_header {
-  color: #000;
+.rhap_header,
+.rhap_time,
+.rhap_container svg {
+  color: #eaeaea;
+}
+
+.rhap_container {
+  background: url(/images/Wawa-T-008.jpg) center -280px;
+  background-size: cover;
+}
+.rhap_progress-indicator,
+.rhap_volume-indicator {
+  background: #eaeaea;
+}
+.rhap_main-controls-button {
 }

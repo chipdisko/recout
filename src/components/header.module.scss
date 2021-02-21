@@ -2,23 +2,51 @@
 
 .global_header {
     margin-bottom: 40px;
+    display: flex;
+    align-items: center;
     @include mq(md) {
         margin-bottom: 20px;
     }
+    @include mq(sm) {
+        display: block;
+        margin-bottom: 8px
+    }
 }
 .logo {
-    color: #FFF;
-    line-height: 1;
+    margin-right: 20px;
+    @include mq(sm){
+        margin-right: 0;
+    }
 }
 .logo div {
+    transition: all .1s;
     position: relative;
     display: inline-block;
-    background: red;
-    font-size: 30px;
-    font-weight: bold;
-    padding: 10px 20px;	
+    background: rgba(#922, .8);
+    font-family: "Monoton";
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-size: 40px;
+    font-weight: normal;
+    color: #6d6d6d;
+    padding: 10px 13px 13px;
+    @include mq(sm) {
+        font-size: 22px;
+    }
+    &:hover {
+        color: #d7d7d7;
+        background: #cf2121;
+    }
 }
 .logo span {
     display: block;
     font-size: 12px;
+}
+.now-playing {
+    display: inline-block;
+    padding: .4em;
+    //background: rgba(#000, .3);
+    @include mq(sm) {
+        font-size: 12px;
+    }
 }

@@ -32,14 +32,17 @@ export default function Events({data, pageContext}) {
     />
     {console.log(data)}
     <article>
-      <h1>{post.frontmatter.title} <span>@{post.frontmatter.venue}@{post.frontmatter.date}</span></h1>
-      <div className={styles.event}>
-        <div className={styles.sounds}>
+      <h1 className={styles.eventTitle}>
+        {post.frontmatter.title} 
+        <span className={styles.meta}>@<span className={styles.venue}>{post.frontmatter.venue}</span>@<span className={styles.date}>{post.frontmatter.date}</span></span>
+      </h1>
+      <div className={styles.eventData}>
+        <div className={styles.nontext}>
           <figure>
             <img src={dataRoot+data.images.nodes[0].relativePath} alt={post.frontmatter.title} />
           </figure>
-          <p>▽ CLICK <FontAwesomeIcon icon={faPlay} /> to play, <FontAwesomeIcon icon={faFileDownload} /> to DOWNLOAD.</p>
           <ol>
+            <p>▽ CLICK <FontAwesomeIcon icon={faPlay} /> to play, <FontAwesomeIcon icon={faFileDownload} /> to DOWNLOAD.</p>
             {data.audios.nodes.map((node) => {
               const prettyName = node.name.replace(/@.*/,"").replace(/\d+-/,"")
               const tag = prettyName.replace(/-.*/,"")
@@ -52,21 +55,23 @@ export default function Events({data, pageContext}) {
                     dispatch(changeMusic(node.relativePath, node.name))
                   }
                 }>
-                  {
-                    state.musicTitle === node.name ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
-                  }
-                </button> 
-                <span className={styles.name}>
-                  <span onClick={()=>dispatch(changeMusic(node.relativePath, node.name))}>
-                    <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
+                  <div className={styles.icon}>
+                    {
+                      state.musicTitle === node.name ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
+                    }
+                  </div>
+                  <span className={styles.name}>
+                    <span>
+                      <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
+                    </span>
                   </span>
-                  <a href={dataRoot+node.relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>
-                </span>
+                </button> 
+                <a href={dataRoot+node.relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>
               </li>
             })}
           </ol>
         </div>
-        <div className={styles.information}>
+        <div className={styles.text}>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
       </div>
