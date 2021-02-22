@@ -61,9 +61,7 @@ export default function Events({data, pageContext}) {
                     }
                   </div>
                   <span className={styles.name}>
-                    <span>
-                      <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
-                    </span>
+                    <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
                   </span>
                 </button> 
                 <a href={dataRoot+node.relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>

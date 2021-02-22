@@ -49,8 +49,6 @@
     }
   }
   a {
-    position: relative;
-    overflow: hidden;
     height: 100%;
     box-sizing: border-box;
     display: block;
@@ -64,25 +62,9 @@
       color : $red;
       background: #121212;
     }
-    &::before {
-      content: "";
-      top: 50%;
-      left: 50%;
-      transform: translate(50%, 50%) rotate(45deg);
-      background: $red;
-      background: rgba(#f1f1f1, .8);
-      width: 100vw;
-      height: 100vw;
-      position: absolute;
-      transition: all .5s;
-      transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
-      z-index: 1;
-    }
-    &:hover{
-      &::before {
-        transform: translate(-110%, -110%) rotate(45deg);
-      }
-    }
+
+    @extend %beforeKiran;
+
   }
   h3 {
     font-size: 30px;
