@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
+    "classnames": "^2.2.6",
     "fontsource-abril-fatface": "^4.0.0",
     "fontsource-didact-gothic": "^4.0.0",
     "fontsource-monoton": "^4.0.0",

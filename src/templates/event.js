@@ -18,6 +18,7 @@ export default function Events({data, pageContext}) {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
   const dataRoot = "/data/"
+
   // REDUX ACTION
   const changeMusic = (url, title) => {
     return {
@@ -50,7 +51,13 @@ export default function Events({data, pageContext}) {
 
               return <li key={node.id}>
                 <button 
-                  className={"audio-play "+(state.musicTitle === node.name? styles.playing: "" )} 
+                  className={
+                    "audio-play "
+                    +(state.musicTitle === node.name? styles.playing: "" )
+                    // loadedにする予定
+                    // +(state.musicTitle === node.name? styles.loaded: "" )
+                    // +(state.musicTitle === node.name? styles.loaded: "" )
+                } 
                   onClick={ (e)=> {
                     dispatch(changeMusic(node.relativePath, node.name))
                   }
