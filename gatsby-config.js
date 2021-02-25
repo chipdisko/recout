@@ -53,6 +53,7 @@ module.exports = {
       options: {
         name: 'data',
         path: `${__dirname}/static/data/`,
+        ignore: [`**/\.*`],
       },
     },
     `gatsby-transformer-remark`,
