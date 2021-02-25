@@ -55,5 +55,10 @@ main {
 .rhap_volume-indicator {
   background: #eaeaea;
 }
+.rhap_progress-container,
+.rhap_volume-container,
+.rhap_controls-section button {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
 .rhap_main-controls-button {
 }

@@ -5,6 +5,9 @@
 .archives {
   display: flex;
   flex-wrap: wrap;
+  @include mq(sm) {
+    display: block;
+  }
 }
 .archive {
   box-sizing: border-box;
@@ -41,7 +44,8 @@
     width: calc(100% + 24px);
     max-width: none;
     @include mq(md) {
-      height: 100px;
+      //min-height: 130px;
+      height: 200px;
       overflow: hidden;
     }
     img {

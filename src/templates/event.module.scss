@@ -172,7 +172,8 @@ p {
   figure {
     margin: 0;
     margin-bottom: 30px;
-    //background: #000;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
     box-shadow: 
       4px 8px 16px rgba(#000, .3);
     img {

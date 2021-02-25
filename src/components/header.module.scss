@@ -29,12 +29,14 @@
         background: rgba(#922, .8);
         color: #6d6d6d;
     }
-    25%, 30%, 32%, 34%,40%, 70%,72%
+    25%, 30%, 32%, 34%,40%,72%
      {
         color: #d7d7d7;
         background: #cf2121;
     }
     70% {
+        color: #dfdfdf;
+        background: #d51616;
         box-shadow: 0 0 24px rgba(#ef3232, .6);
         text-shadow: 0 0 18px rgba(#e2e2e2, .7);
     }
