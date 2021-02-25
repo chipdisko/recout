@@ -1,5 +1,6 @@
-import React , {useContext} from "react"
+import React , {useContext, useState} from "react"
 import {graphql} from "gatsby"
+// import classNames from 'classnames';
 import Layout from "../components/layout"
 import Head from '../components/head'
 import styles from "./event.module.scss"
@@ -18,6 +19,11 @@ export default function Events({data, pageContext}) {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
   const dataRoot = "/data/"
+
+  const [isLight, setIsLight] = useState(false);
+  const toggleLight = () => {
+    setIsLight(!isLight);
+  }
 
   // REDUX ACTION
   const changeMusic = (url, title) => {
@@ -39,7 +45,7 @@ export default function Events({data, pageContext}) {
       </h1>
       <div className={styles.eventData}>
         <div className={styles.nontext}>
-          <figure>
+          <figure className={isLight ? styles.light:''} onClick={toggleLight}>
             <img src={dataRoot+data.images.nodes[0].relativePath} alt={post.frontmatter.title} />
           </figure>
           <ol>

@@ -179,11 +179,13 @@ p {
       transition: all .07s;
       opacity: .5;
     }
-    &:hover {
+    cursor: pointer;
+    &.light {
       img{
         opacity: 1;
       }
     }
+
     @include mq(sm) {
       opacity: 1;
     }
