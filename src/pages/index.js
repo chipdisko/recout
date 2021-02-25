@@ -12,7 +12,7 @@ export default function Home({data}) {
   return (<Layout>
     <Head title="HOME" />
     <div className={styles.information}>
-      <p>ever under construction.</p>
+      <p>design changed @21.02.26</p>
     </div>
     <div className={styles.archives}>
       {data.allMarkdownRemark.edges.map(({ node }) => (

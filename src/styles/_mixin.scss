@@ -12,6 +12,19 @@ $breakpoints: (
   }
 }
 
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 480px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
 $red: #d61313;
 
 %beforeKiran {
@@ -27,7 +40,7 @@ $red: #d61313;
     width: 150vw;
     height: 200vw;
     position: absolute;
-    transition: all .5s;
+    transition: all .6s;
     transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
     z-index: 1;
   }

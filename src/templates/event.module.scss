@@ -176,6 +176,8 @@ p {
     -webkit-tap-highlight-color:rgba(0,0,0,0);
     box-shadow: 
       4px 8px 16px rgba(#000, .3);
+    transition: all .07s;
+    transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
     img {
       transition: all .07s;
       opacity: .5;
@@ -186,9 +188,24 @@ p {
         opacity: 1;
       }
     }
+    @include mq-up(sm) {
+      transform: scale(.9);
+      &.light {
+        transform: scale(1);
+      }
+    }
 
     @include mq(sm) {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
       opacity: 1;
+      width: 220px;
+      &.light {
+        transform: scale(1.4545);
+        box-shadow: 
+          4px 8px 100px rgba(#000, .7);
+        }
     }
     //@extend %beforeKiran;
   }
@@ -317,7 +334,7 @@ p {
 
 
 .description {
-  color: #e1e1e1;
+  color: #e3e3e3;
   max-width: 920px;
   font-size: 18px;
   text-shadow: 1px 1px 2px rgba(#000, .5);
@@ -343,10 +360,12 @@ p {
     max-width: 33.3333%;
     transition: all .14s ease-out;
     opacity: .6;
-    &:hover {
-      transform: scale(1.4);
-      opacity: 1;
-      z-index:3;
+    @include mq-up(sm){
+      &:hover {
+        transform: scale(1.4);
+        opacity: 1;
+        z-index:3;
+      }
     }
     &:nth-of-type(3n-2){
       transform-origin: left bottom;
@@ -359,7 +378,7 @@ p {
     }
     @include mq(sm){
       &:hover {
-        transform: scale(1.8);
+        opacity: 1;
       }
     }
   }
