@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./header.module.scss"
-import { useStaticQuery, Link, graphql } from "gatsby"
+//import { useStaticQuery, Link, graphql } from "gatsby"
 
 export default function Header(props) {
   return (
