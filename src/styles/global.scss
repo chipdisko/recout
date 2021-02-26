@@ -41,20 +41,73 @@ main {
 }
 
 // audio player
+
+@keyframes glow2 {
+  0%, 100% {
+    box-shadow:
+      250px 40px 300px rgba( #458, .2) inset,
+      -4px -60px 150px rgba( #2ba, .05) inset,
+      -4px 10px 50px rgba( #4cd, .1) inset,
+      88px -70px 110vw rgba( #a72, .3) inset,
+    ;
+  }
+  25% {
+    box-shadow:
+      100px 40px 150px rgba( #4842a1, .15) inset,
+      400px -20px 400px rgba( #17d, .05) inset,
+      -50px 60px 400px rgba( #296, .05) inset,
+      90px -40px 800px rgba( #941, .2) inset,
+    ;
+  }
+  50% {
+    box-shadow:
+      100px -10px 180px rgba( #273, .15) inset,
+      -30px -20px 400px rgba( #492, .05) inset,
+      -150px 100px 600px rgba( #18a, .1) inset,
+      130px 100px 700px rgba( #876, .1) inset,
+    ;
+  }
+  75% {
+    box-shadow:
+      100px 40px 260px rgba( #227288, .16) inset,
+      -300px -50px 800px rgba( #2a8, .05) inset,
+      50px 60px 500px rgba( #4aa, .1) inset,
+      150px -20px 400px rgba( #b61, .1) inset,
+    ;
+  }
+}
+$highColor: #eaeaea;
+$offColor: #a2a2a2;
 .rhap_header,
 .rhap_time,
 .rhap_container svg {
-  color: #eaeaea;
-}
-
-.rhap_container {
-  background: url(/images/Wawa-T-008.jpg) center -280px;
-  background-size: cover;
+  color: #a2a2a2;
 }
 .rhap_progress-indicator,
 .rhap_volume-indicator {
-  background: #eaeaea;
+  background: #a2a2a2;
 }
+.rhap_container {
+  background: #121212;
+  opacity: 1;
+  &.playing {
+    animation: glow2 6s infinite;
+    .rhap_header,
+    .rhap_time,
+    svg {
+      color: #eaeaea;
+    }
+    .rhap_progress-indicator,
+    .rhap_volume-indicator {
+      background: #eaeaea;
+    }
+  }
+  &.stop {
+    opacity: 0;
+    height: 0;
+  }
+}
+
 .rhap_container, 
 .rhap_progress-container,
 .rhap_volume-container,

@@ -11,7 +11,6 @@ import {
 } from "../context/GlobalContextProvider"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlay, faPause,faFileDownload } from "@fortawesome/free-solid-svg-icons"
 
 export default function Events({data, pageContext}) {
@@ -33,11 +32,32 @@ export default function Events({data, pageContext}) {
         title: title,
     }
   }
+  const pauseMusic = () => {
+    return {
+        type: "PAUSE",
+    }  
+  }
+  const playMusic = () => {
+    return {
+        type: "PLAY",
+    }  
+  }
+  const handlePlayButton = (url, title) => {
+    if(state.musicTitle === title){
+      switch(state.playerStatus) {
+        case "paused":
+          return playMusic()
+        case "playing":
+          return pauseMusic()
+      }
+    } else {
+      return changeMusic(url, title);
+    }
+  }
 
   return (<Layout>
     <Head title={post.frontmatter.title+"@"+post.frontmatter.venue+"@"+post.frontmatter.date}
     />
-    {console.log(data)}
     <article>
       <h1 className={styles.eventTitle}>
         {post.frontmatter.title} 
@@ -59,18 +79,15 @@ export default function Events({data, pageContext}) {
                 <button 
                   className={
                     "audio-play "
-                    +(state.musicTitle === node.name? styles.playing: "" )
-                    // loadedにする予定
-                    // +(state.musicTitle === node.name? styles.loaded: "" )
-                    // +(state.musicTitle === node.name? styles.loaded: "" )
+                    +(state.musicTitle === node.name? styles.active: "" )
                 } 
                   onClick={ (e)=> {
-                    dispatch(changeMusic(node.relativePath, node.name))
+                    dispatch(handlePlayButton(node.relativePath, node.name))
                   }
                 }>
                   <div className={styles.icon}>
                     {
-                      state.musicTitle === node.name ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
+                      state.playerStatus === "playing"&&state.musicTitle === node.name ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
                     }
                   </div>
                   <span className={styles.name}>
