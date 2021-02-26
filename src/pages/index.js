@@ -5,7 +5,6 @@ import Head from '../components/head'
 
 import styles from "./index.module.scss"
 
-
 export default function Home({data}) {
   console.log({data})
   const dataRoot = "/data/"
