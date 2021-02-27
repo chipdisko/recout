@@ -79,7 +79,7 @@ export default function Events({data, pageContext}) {
                 <button 
                   className={
                     "audio-play "
-                    +(state.musicTitle === node.name? styles.active: "" )
+                    +(state.musicTitle === node.name? styles.current: "" )
                 } 
                   onClick={ (e)=> {
                     dispatch(handlePlayButton(node.relativePath, node.name))
