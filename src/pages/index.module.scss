@@ -32,8 +32,10 @@
   }
 
   @include mq(sm){
-    width: 100%;
+    width: 80%;
     padding: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 
