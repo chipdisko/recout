@@ -28,7 +28,7 @@ export default function Events({data, pageContext}) {
   const changeMusic = (url, title) => {
     return {
         type: "CHANGE_MUSIC",
-        url: dataRoot+url,
+        url: url,
         title: title,
     }
   }
@@ -70,31 +70,33 @@ export default function Events({data, pageContext}) {
           </figure>
           <ol>
             <p>▽ CLICK <FontAwesomeIcon icon={faPlay} /> to play, <FontAwesomeIcon icon={faFileDownload} /> to DOWNLOAD.</p>
-            {data.audios.nodes.map((node) => {
-              const prettyName = node.name.replace(/@.*/,"").replace(/\d+-/,"")
+
+            {post.frontmatter.tracklist.map((track) => {
+              const prettyName = track.replace(/@.*/,"").replace(/\d+-/,"")
               const tag = prettyName.replace(/-.*/,"")
               const name = prettyName.replace(/.*?-/,"").replace(/_/g," ")
+              const relativePath = "/audios/"+post.frontmatter.dataDirectry+"/"+track
 
-              return <li key={node.id}>
+              return <li key={track}>
                 <button 
                   className={
                     "audio-play "
-                    +(state.musicTitle === node.name? styles.current: "" )
+                    +(state.musicTitle === track? styles.current: "" )
                 } 
                   onClick={ (e)=> {
-                    dispatch(handlePlayButton(node.relativePath, node.name))
+                    dispatch(handlePlayButton(relativePath, track))
                   }
                 }>
                   <div className={styles.icon}>
                     {
-                      state.playerStatus === "playing"&&state.musicTitle === node.name ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
+                      state.playerStatus === "playing"&&state.musicTitle === track ? <FontAwesomeIcon icon={faPause} />:<FontAwesomeIcon icon={faPlay} />
                     }
                   </div>
                   <span className={styles.name}>
                     <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
                   </span>
                 </button> 
-                <a href={dataRoot+node.relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>
+                <a href={relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>
               </li>
             })}
           </ol>
@@ -122,21 +124,11 @@ export const query = graphql`
         date
         venue
         dataDirectry
+        tracklist
       }
     }
     images: allFile(
       filter: {sourceInstanceName: {eq: "data"}, relativeDirectory: {in: $dataDirectry}, extension: {in: ["jpg","png"]}},
-      sort: {fields: name, order: ASC}
-    ){
-      nodes {
-        id
-        prettySize
-        name
-        relativePath
-      }
-    }
-    audios: allFile(
-      filter: {sourceInstanceName: {eq: "data"}, relativeDirectory: {in: $dataDirectry}, extension: {eq: "mp3"}},
       sort: {fields: name, order: ASC}
     ){
       nodes {
