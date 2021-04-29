@@ -17,7 +17,8 @@ export default function Events({data, pageContext}) {
   const post = data.markdownRemark
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-  const dataRoot = "/data/"
+  const dataPath = "/data/"
+  const audiosPath ="/audios/"
 
   const [isLight, setIsLight] = useState(false);
   const toggleLight = () => {
@@ -66,7 +67,7 @@ export default function Events({data, pageContext}) {
       <div className={styles.eventData}>
         <div className={styles.nontext}>
           <figure className={isLight ? styles.light:''} onClick={toggleLight}>
-            <img src={dataRoot+data.images.nodes[0].relativePath} alt={post.frontmatter.title} />
+            <img src={dataPath+data.images.nodes[0].relativePath} alt={post.frontmatter.title} />
           </figure>
           <ol>
             <p>▽ CLICK <FontAwesomeIcon icon={faPlay} /> to play, <FontAwesomeIcon icon={faFileDownload} /> to DOWNLOAD.</p>
@@ -75,7 +76,7 @@ export default function Events({data, pageContext}) {
               const prettyName = track.replace(/@.*/,"").replace(/\d+-/,"")
               const tag = prettyName.replace(/-.*/,"")
               const name = prettyName.replace(/.*?-/,"").replace(/_/g," ")
-              const relativePath = "/audios/"+post.frontmatter.dataDirectry+"/"+track
+              const relativePath = audiosPath+post.frontmatter.dataDirectry+"/"+track
 
               return <li key={track}>
                 <button 
@@ -107,8 +108,8 @@ export default function Events({data, pageContext}) {
       </div>
       <figure className={styles.gallery}>
         {data.images.nodes.map((node) => (
-          // <Link key={node.id} to={dataRoot+node.relativePath}><img src={dataRoot+node.relativePath} alt={node.name} /></Link>
-          <img key={node.id} src={dataRoot+node.relativePath} alt={node.name} />
+          // <Link key={node.id} to={dataPath+node.relativePath}><img src={dataPath+node.relativePath} alt={node.name} /></Link>
+          <img key={node.id} src={dataPath+node.relativePath} alt={node.name} />
         ))}
       </figure>
     </article>
