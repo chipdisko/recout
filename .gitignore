@@ -58,6 +58,7 @@ typings/
 .cache/
 public
 static/data/
+audios
 
 # Mac files
 .DS_Store
