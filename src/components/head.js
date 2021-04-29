@@ -10,7 +10,7 @@ export default (props) => (
     meta={[
       {
         name: 'description',
-        content: props.description || "Proper DJ's REC OUTs around me."
+        content: props.description || "Proper DJ's REC OUTs."
       }
     ]}   
   />
