@@ -16,9 +16,7 @@ export default function Home({data}) {
     <div className={styles.archives}>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <article className={styles.archive} key={node.id}>
-          <Link
-            to={node.fields.slug}
-          >
+          <Link to={node.fields.slug}>
             <figure>
               <img src={dataRootPath+node.frontmatter.dataDirectry+"/1.jpg"} alt={node.frontmatter.title} />
             </figure>

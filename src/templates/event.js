@@ -18,7 +18,7 @@ export default function Events({data, pageContext}) {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
   const dataRootPath = "/data/"
-  const audiosRootPath ="/audios/"
+  const audiosRootPath = "/audios/"
 
   const [isLight, setIsLight] = useState(false);
   const toggleLight = () => {
@@ -57,8 +57,7 @@ export default function Events({data, pageContext}) {
   }
 
   return (<Layout>
-    <Head title={post.frontmatter.title+"@"+post.frontmatter.venue+"@"+post.frontmatter.date}
-    />
+    <Head title={post.frontmatter.title+"@"+post.frontmatter.venue+"@"+post.frontmatter.date} />
     <article>
       <h1 className={styles.eventTitle}>
         {post.frontmatter.title} 
@@ -76,7 +75,7 @@ export default function Events({data, pageContext}) {
               const prettyName = track.replace(/@.*/,"").replace(/\d+-/,"")
               const tag = prettyName.replace(/-.*/,"")
               const name = prettyName.replace(/.*?-/,"").replace(/_/g," ")
-              const relativePath = audiosRootPath+post.frontmatter.dataDirectry+"/"+track
+              const trackUrl = audiosRootPath+post.frontmatter.dataDirectry+"/"+track
 
               return <li key={track}>
                 <button 
@@ -85,7 +84,7 @@ export default function Events({data, pageContext}) {
                     +(state.musicTitle === track? styles.current: "" )
                 } 
                   onClick={ (e)=> {
-                    dispatch(handlePlayButton(relativePath, track))
+                    dispatch(handlePlayButton(trackUrl, track))
                   }
                 }>
                   <div className={styles.icon}>
@@ -97,7 +96,7 @@ export default function Events({data, pageContext}) {
                     <span className={`${styles.tag}  ${styles[tag]}`}>{tag}</span>{name}
                   </span>
                 </button> 
-                <a href={relativePath} download><FontAwesomeIcon icon={faFileDownload} /></a>
+                <a href={trackUrl} download><FontAwesomeIcon icon={faFileDownload} /></a>
               </li>
             })}
           </ol>
