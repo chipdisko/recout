@@ -7,7 +7,7 @@ import styles from "./index.module.scss"
 
 export default function Home({data}) {
   console.log({data})
-  const dataRoot = "/data/"
+  const dataRootPath = "/data/"
   return (<Layout>
     <Head title="HOME" />
     <div className={styles.information}>
@@ -20,7 +20,7 @@ export default function Home({data}) {
             to={node.fields.slug}
           >
             <figure>
-              <img src={dataRoot+node.frontmatter.dataDirectry+"/1.jpg"} alt={node.frontmatter.title} />
+              <img src={dataRootPath+node.frontmatter.dataDirectry+"/1.jpg"} alt={node.frontmatter.title} />
             </figure>
             <h3>
               {node.frontmatter.title}{" "}
