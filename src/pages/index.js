@@ -10,9 +10,11 @@ export default function Home({data}) {
   const dataRootPath = "/data/"
   return (<Layout>
     <Head title="HOME" />
+    {/* 
     <div className={styles.information}>
       <p>design changed @21.02.26</p>
     </div>
+    */}
     <div className={styles.archives}>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <article className={styles.archive} key={node.id}>

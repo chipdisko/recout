@@ -11,7 +11,7 @@ export default function Header(props) {
           REC OUT
         </div>
       </div>
-      <div className={styles.nowPlaying}>♪ {props.nowPlaying}</div>
+      {/* <div className={styles.nowPlaying}>♪ {props.nowPlaying}</div> */}
     </header>
   )
 }
