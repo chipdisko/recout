@@ -90,12 +90,16 @@ h1.event-title {
     margin-left: -12px;
     width: calc(100% + 24px);    
   }
+
+  text-shadow: 0 0 8px rgba(#FFF,.5);
+
   .meta {
     display: block;
     font-size: 40%;
     color: #c3c3c3;
     letter-spacing: .08em;
     font-style: italic;
+    text-shadow: 0 0 4px rgba(#FFF,.5);
     span {
       // transition: all .3s;
       font-size: 1.4em;
