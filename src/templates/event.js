@@ -59,10 +59,12 @@ export default function Events({data, pageContext}) {
   return (<Layout>
     <Head title={post.frontmatter.title+"@"+post.frontmatter.venue+"@"+post.frontmatter.date} />
     <article>
-      <h1 className={styles.eventTitle}>
-        {post.frontmatter.title} 
-        <span className={styles.meta}>@<span className={styles.venue}>{post.frontmatter.venue}</span>@<span className={styles.date}>{post.frontmatter.date}</span></span>
-      </h1>
+      <div className={styles.eventTitle}>
+        <h1>
+          {post.frontmatter.title} 
+          <span className={styles.meta}>@<span className={styles.venue}>{post.frontmatter.venue}</span>@<span className={styles.date}>{post.frontmatter.date}</span></span>
+        </h1>
+      </div>
       <div className={styles.eventData}>
         <div className={styles.nontext}>
           <figure className={isLight ? styles.light:''} onClick={toggleLight}>
