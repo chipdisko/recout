@@ -1,9 +1,12 @@
 @import "../styles/mixin";
 
 .global_header {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 40px;
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     @include mq(md) {
         margin-bottom: 20px;
     }
