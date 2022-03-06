@@ -63,7 +63,29 @@ article {
     max-width: 1200px;
   }
 }
-
+@keyframes titleGlow {
+  0%{
+    text-shadow:
+      0 0 4px rgba(#FFF,.2),
+      0 .38em 8px rgba(#1f5,.1),
+      0 .4em 7px rgba(#F93,.2)
+    ;
+  }
+  50%{
+    text-shadow:
+      0 0 4px rgba(#FFF,.2),
+      0 .4em 9px rgba(#1f5,.2),
+      0 .38em 8px rgba(#F93,.15)
+    ;
+  }  
+  75%{
+    text-shadow:
+      0 0 4px rgba(#FFF,.2),
+      0 .38em 7px rgba(#1f5,.25),
+      0 .4em 8px rgba(#F93,.1)
+    ;
+  }  
+}
 .event-title {
   color: #e2e2e2;
   margin: 0 0 40px;
@@ -85,6 +107,7 @@ article {
   animation: glow 6s infinite ease-in;
   // transition: all .3s;
   //transform: scaleX(1) scaleY(1.2) scaleZ(1) rotateX(-17deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  text-shadow: 0 0 8px rgba(#FFF,.2);
 
   h1 {
     font-size: 40px;
@@ -92,6 +115,12 @@ article {
     padding: 0 12px;
     margin: 0;
     box-sizing: border-box;
+    text-shadow:
+      0 0 4px rgba(#FFF,.2),
+      0 .38em 8px rgba(#1f5,.1),
+      0 .4em 8px rgba(#F93,.2)
+      ;
+    animation: titleGlow 2s infinite ease-in;  
     @include mq(sm) {
       margin-left: -12px;
       padding: 15px 16px 20px;
@@ -106,7 +135,7 @@ article {
     width: calc(100% + 24px);    
   }
 
-  text-shadow: 0 0 8px rgba(#FFF,.5);
+  
 
   .meta {
     display: block;
@@ -114,7 +143,7 @@ article {
     color: #c3c3c3;
     letter-spacing: .08em;
     font-style: italic;
-    text-shadow: 0 0 4px rgba(#FFF,.5);
+    //text-shadow: 0 0 4px rgba(#FFF,.5);
     span {
       // transition: all .3s;
       font-size: 1.4em;
@@ -310,8 +339,12 @@ p {
     &.live {color: #4c4;}
     &.b2b {color: #C0C;}
     &.performance, 
-    &.pfrmnc,
-    &.session {color: #CC0;}
+    &.pfrmnc {color: #CC0;}
+    &.session {color: #4df;}
+    &.sing,
+    &.rubadab,
+    &.mc {color: #c63;}
+    &.end {color: #999;}
   }
 }
 
@@ -326,7 +359,7 @@ p {
   color: #e3e3e3;
   max-width: 920px;
   font-size: 18px;
-  text-shadow: 1px 1px 2px rgba(#000, .5);
+  text-shadow: 0 .4em 2px rgba(#000, .5);
   padding-left: 8px;
   .timetable {
     font-family: monospace;
