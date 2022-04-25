@@ -15,17 +15,10 @@ body {
   font-family: "Didact Gothic", "Questrial","Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 
-.audio-player {
-  position: fixed;
-  bottom: 0;
-  z-index: 999;
-  box-shadow: 0 -32px 128px rgba(#000, .6);
-}
-
 main {
-  margin:0 16px;
+  margin:0 0 0;
   @include mq(sm){
-    margin: 0 12px;
+    margin: 0 0 0;
   }
   p{
       line-height: 1.6;
