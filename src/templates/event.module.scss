@@ -89,10 +89,9 @@ article {
 .event-title {
   color: #e2e2e2;
   margin: 0 0 40px;
-  margin-left: -16px;
   max-width: none;
   border-radius: 0;
-  width: calc(100% + 32px);
+  width: 100%;
   box-sizing: border-box;
   font-weight: normal;
   background: #090909;
@@ -132,7 +131,6 @@ article {
   }
   @include mq(sm){
     padding: 0;
-    width: calc(100% + 24px);    
   }
 
   
