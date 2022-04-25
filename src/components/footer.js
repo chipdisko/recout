@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect, useContext} from "react"
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
+import styles from "./footer.module.scss"
 
 import {
   GlobalDispatchContext,
@@ -54,7 +55,7 @@ export default function Footer(props) {
   return (<>
     <AudioPlayer
       ref = {player}
-      className={"audio-player " + props.playerStatus}
+      className={`${styles.audioPlayer} ${props.playerStatus}`}
       // autoPlay
       header = {props.musicTitle}
       src= {props.musicSrc}
