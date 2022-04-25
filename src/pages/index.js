@@ -16,7 +16,7 @@ export default function Home({data}) {
     </div>
     */}
     <div className={styles.archives}>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMarkdownRemark.edges.filter( node=> !node.node.frontmatter.private ).map(({ node }) => (
         <article className={styles.archive} key={node.id}>
           <Link to={node.fields.slug}>
             <figure>
@@ -51,6 +51,7 @@ export const query = graphql`
             date(formatString: "Do MMM, YYYY")
             venue
             dataDirectry
+            private
           }
           fields {
             slug
